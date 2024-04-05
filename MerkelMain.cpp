@@ -191,6 +191,20 @@ void MerkelMain::gotoNextTimeframe()
 {
     std::cout << "Going to next time frame. " << std::endl;
     currentTime = orderbook.getNextTime(currentTime);
+    std::vector<OrderBookEntry> sales =  orderbook.matchAsksToBids("ETH/BTC", currentTime);
+    std::cout << "Sales: " << sales.size() << std::endl; 
+    for (OrderBookEntry& sale : sales)
+    {
+        std::cout << "Sale price: " << sale.amount << " amount: " << sale.amount << std::endl;
+        if (sale.username == "simuser")
+        {
+            Wallet.processSale(sale);
+        }
+    }
+
+    // Keep track of the last timefram to calculate the price change. 
+    std::cout << "Returning to Main menu \n" << std::endl;
+
 }
  
 int MerkelMain::getUserOption()
