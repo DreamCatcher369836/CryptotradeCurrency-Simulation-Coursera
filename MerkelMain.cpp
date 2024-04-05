@@ -84,7 +84,7 @@ void MerkelMain::printMarketStats()
     */ 
 }
 
-void MerkleMain::enterAsk()
+void MerkelMain::enterAsk()
 {
     
     std::cout << "Place an ask - enter the amount: product, price, amount e.g ETH/BTC, 10, 50" << std::endl;
@@ -110,10 +110,10 @@ void MerkleMain::enterAsk()
 
             obe.username = "simuser"; 
 
-            if(wallet.canFulfillOrder(obe))
+            if(Wallet.canFulfillOrder(obe))
             {
                 std::cout << "Wallet looks ok, adding order" << std::endl;
-                orderBook.insertOrder(obe);
+                orderbook.insertOrder(obe);
             }
             else
             {
@@ -156,10 +156,10 @@ void MerkelMain::enterBid()
 
             obe.username = "simuser"; 
 
-            if(wallet.canFulfillOrder(obe))
+            if(Wallet.canFulfillOrder(obe))
             {
                 std::cout << "Wallet looks ok, adding order" << std::endl;
-                orderBook.insertOrder(obe);
+                orderbook.insertOrder(obe);
             }
             else
             {

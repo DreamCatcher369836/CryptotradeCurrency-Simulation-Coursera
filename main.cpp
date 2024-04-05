@@ -4,53 +4,23 @@
 #include "OrderBookEntry.h"
 #include "MerkelMain.h"
 #include "CSVReader.h"
+#include "wallet.h" // Include the header file for the wallet class
 
 int main()
 {
-
     MerkelMain app{};
     app.init();
 
+    wallet Wallet{}; // Declare a wallet object
+    Wallet.insertCurrency("BTC", 1.5);
+    std::cout << "Wallet should contain 1.5 BTC now" << std::endl;
+    std::cout << Wallet.toString() << std::endl;
+    bool result = Wallet.containsCurrency("BTC", 1.5);
+    std::cout << "Result should be true " << result << std::endl;
+    result = Wallet.removeCurrency("BTC", 2.0);
+    std::cout << "Result should be false " << result << std::endl;
+    result = Wallet.removeCurrency("BTC", 1.0);
+    std::cout << "Result should be true " << result << std::endl;
+
+    return 0; // Ensure to return an exit status
 }
-
-
-
-
-
-
-//     std::vector<OrderBookEntry> orders;
-
-//     orders.push_back(  OrderBookEntry{1000, 
-//                           0.02, 
-//                         "2020/03/17 17:01:24.884492", 
-//                         "BTC/USDT", 
-//                         OrderBookType::bid}    );
-
-//     orders.push_back(  OrderBookEntry{2000, 
-//                           0.02, 
-//                         "2020/03/17 17:01:24.884492", 
-//                         "BTC/USDT", 
-//                         OrderBookType::bid}    );
-        
-
-//    // std::cout << "The price is " << orders[1].price << std::endl;
-
-//     for (OrderBookEntry& order : orders)
-//     {
-//         std::cout << "The price is " << order.price << std::endl;
-//     }
-
-//     for (unsigned int i = 0; i < orders.size() ; ++i)
-//     {
-//         std::cout << "The price is " << orders[i].price << std::endl;
-//     }
-
-//     for (unsigned int i = 0; i < orders.size() ; ++i)
-//     {
-//         std::cout << "The price is " << orders.at(i).price << std::endl;
-//     }
-
-
-
-
- 
